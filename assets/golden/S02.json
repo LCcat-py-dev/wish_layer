@@ -1,0 +1,35 @@
+{
+  "id": "S02",
+  "raw_input": "老师让交个网站，下周要",
+  "scope": "in",
+  "ambiguity_type": "T1",
+  "classification": { "primary": "C-01", "form": "课程作业展示站", "route": "R-3", "method": "M-02" },
+  "filled": [
+    { "slot": "核心任务", "value": "信息传递", "basis": "措辞推断", "evidence": "无交易、互动、办事类动词" },
+    { "slot": "技术能力", "value": "无", "basis": "措辞推断", "evidence": "'交'字表明是完成要求而非自主开发" },
+    { "slot": "内容维护者", "value": "自己", "basis": "措辞推断", "evidence": "单人作业" },
+    { "slot": "周期", "value": "天级", "basis": "措辞推断", "evidence": "'下周'→≤7 天" },
+    { "slot": "SEO 需求", "value": "弱", "basis": "推断", "evidence": "受众是评分人，不是搜索引擎" },
+    { "slot": "是否用户系统", "value": "否", "basis": "推断", "evidence": "作业无多用户场景" },
+    { "slot": "是否交易", "value": "否", "basis": "推断", "evidence": "无收款语义" },
+    { "slot": "部署区域", "value": "境外托管", "basis": "假设", "evidence": "一周内完成不可能等 ICP 备案，默认走可即时上线的静态托管" },
+    { "slot": "预算", "value": "0", "basis": "假设", "evidence": "学生作业，默认免费档" },
+    { "slot": "创作日志", "value": "需要", "basis": "推断", "evidence": "作业场景下老师会看过程，留痕本身是得分项" }
+  ],
+  "questions": [
+    { "slot": "网站主题", "why": "主题决定页面清单，是唯一的硬缺口", "phrasing": "老师让你做的是关于什么内容的？" }
+  ],
+  "rejected": [
+    { "option": "R-4 全自研", "reason": "周期 2-6 月，与'下周'冲突" },
+    { "option": "C-02 交易型", "reason": "无交易语义，且合规与支付资质需数周" },
+    { "option": "R-1 SaaS 建站", "reason": "可行但会产生月费，作业交完即弃，不划算" },
+    { "option": "ICP 备案", "reason": "1-3 周，超出周期，故改走境外托管" }
+  ],
+  "complexity": { "roles": 1, "states": 1, "relations": "少", "nfr": "低", "level": "1 人日量级", "reality_check": "通过" },
+  "plan": ["S-1 需求一页纸", "S-2 页面清单（合并进 S-1）", "S-3 静态托管", "S-4 模板改造", "S-5 实现", "S-6 内容填充", "S-7 响应式与性能检查", "S-8 部署"],
+  "executor_doubts": [
+    "不知道是几页。假设 3 页：首页 + 内容页 + 关于页。",
+    "不知道有没有指定技术。若老师要求手写 HTML，R-3 的框架会扣分，需确认。",
+    "'创作日志需要'这条是推断不是事实，若老师不在意可删。"
+  ]
+}
